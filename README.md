@@ -272,3 +272,6 @@ Pull requests welcome. For major changes, open an issue first.
 ---
 
 *Built for the SOC community. Stay safe, investigate smart.*
+
+## Acknowledgements
+Built by [@abbas-babayev](https://github.com/abbas-babayev) and [@nugetts](https://github.com/nugetts)
