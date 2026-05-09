@@ -1,0 +1,28 @@
+# docker-compose.yml — оркестрация сервисов
+# Запускает backend и frontend вместе одной командой: docker-compose up
+
+version: "3.9"
+
+services:
+
+  # --- Backend (FastAPI) ---
+  backend:
+    build:
+      context: ./backend          # Папка с Dockerfile
+    ports:
+      - "8000:8000"               # localhost:8000 → контейнер:8000
+    env_file:
+      - ./backend/.env            # Загружаем API ключи из .env
+    restart: unless-stopped
+
+  # --- Frontend (статические файлы через Nginx) ---
+  frontend:
+    image: nginx:alpine           # Лёгкий веб-сервер для статики
+    ports:
+      - "80:80"                   # localhost:80 → контейнер:80
+    volumes:
+      # Монтируем папку frontend в директорию nginx
+      - ./frontend:/usr/share/nginx/html:ro
+    depends_on:
+      - backend                   # Запускаем frontend после backend
+    restart: unless-stopped

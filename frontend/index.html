@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IOC Investigation Platform</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Шрифты: Share Tech Mono для terminal-feel, Inter для читаемости -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Фоновая сетка для атмосферы -->
+  <div class="bg-grid"></div>
+
+  <div class="container">
+
+    <!-- Шапка -->
+    <header class="header">
+      <div class="header-badge">SOC TOOL</div>
+      <h1 class="header-title">
+        <span class="accent">&gt;_</span> IOC Investigation Platform
+      </h1>
+      <p class="header-sub">Threat intelligence enrichment via VirusTotal</p>
+    </header>
+
+    <!-- Форма ввода IOC -->
+    <section class="search-section">
+      <div class="input-wrapper">
+        <span class="input-prefix">IOC:</span>
+        <input
+          type="text"
+          id="iocInput"
+          class="ioc-input"
+          placeholder="Enter IP, domain, URL, or hash..."
+          autocomplete="off"
+          spellcheck="false"
+        />
+      </div>
+      <button id="investigateBtn" class="investigate-btn" onclick="investigate()">
+        <span class="btn-text">INVESTIGATE</span>
+        <span class="btn-arrow">→</span>
+      </button>
+      <p class="hint">
+        Examples: <code>8.8.8.8</code> · <code>malware.com</code> · 
+        <code>http://evil.com/payload</code> · <code>44d88612fea8a8f36de82e...</code>
+      </p>
+    </section>
+
+    <!-- Блок загрузки (скрыт по умолчанию) -->
+    <div id="loadingBlock" class="loading-block hidden">
+      <div class="spinner"></div>
+      <span>Querying VirusTotal...</span>
+    </div>
+
+    <!-- Блок результата (скрыт по умолчанию) -->
+    <section id="resultBlock" class="result-block hidden">
+
+      <!-- Заголовок результата -->
+      <div class="result-header">
+        <h2 class="result-title">Investigation Result</h2>
+        <div id="riskBadge" class="risk-badge">—</div>
+      </div>
+
+      <!-- Карточка с IOC info -->
+      <div class="result-grid">
+        <div class="info-card">
+          <div class="info-label">IOC</div>
+          <div id="resIoc" class="info-value mono">—</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">Type</div>
+          <div id="resType" class="info-value">—</div>
+        </div>
+      </div>
+
+      <!-- Статистика детекций -->
+      <div class="stats-grid">
+        <div class="stat-card malicious">
+          <div class="stat-number" id="statMalicious">—</div>
+          <div class="stat-label">Malicious</div>
+        </div>
+        <div class="stat-card suspicious">
+          <div class="stat-number" id="statSuspicious">—</div>
+          <div class="stat-label">Suspicious</div>
+        </div>
+        <div class="stat-card harmless">
+          <div class="stat-number" id="statHarmless">—</div>
+          <div class="stat-label">Harmless</div>
+        </div>
+        <div class="stat-card undetected">
+          <div class="stat-number" id="statUndetected">—</div>
+          <div class="stat-label">Undetected</div>
+        </div>
+      </div>
+
+      <!-- Рекомендация -->
+      <div class="recommendation-block">
+        <div class="rec-label">⚑ Analyst Recommendation</div>
+        <div id="resRecommendation" class="rec-text">—</div>
+      </div>
+
+    </section>
+
+    <!-- Блок ошибки (скрыт по умолчанию) -->
+    <div id="errorBlock" class="error-block hidden">
+      <span class="error-icon">✕</span>
+      <span id="errorMsg">Error</span>
+    </div>
+
+    <!-- Футер -->
+    <footer class="footer">
+      <p>IOC Investigation Platform — Open Source SOC Tool</p>
+      <p class="footer-warning">⚠ For authorized security investigation only. Do not interact with malicious IOCs without proper containment.</p>
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
