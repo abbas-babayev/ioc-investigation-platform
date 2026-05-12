@@ -229,8 +229,10 @@ GET /
 
 ## 📸 Screenshots
 
-> _Screenshots coming soon — run locally and see for yourself!_
-
+![img](../screenshotsdir/gith.png)
+![img](../screenshotsdir/hash.png)
+![img](../screenshotsdir/malicious.png)
+![img](../screenshotsdir/ser.png)
 ---
 
 ## 🗺️ Roadmap
@@ -245,6 +247,7 @@ GET /
 - [ ] API authentication (API key middleware)
 - [ ] OpenCTI / MISP integration
 - [ ] MITRE ATT&CK mapping
+
 
 ---
 
