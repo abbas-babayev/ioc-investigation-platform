@@ -225,14 +225,12 @@ GET /
 → { "status": "ok", "message": "IOC Investigation Platform is running" }
 ```
 
----
+---## 📸 Screenshots
 
-## 📸 Screenshots
-
-![img](../screenshotsdir/gith.png)
-![img](../screenshotsdir/hash.png)
-![img](../screenshotsdir/malicious.png)
-![img](../screenshotsdir/ser.png)
+![img](screenshotsdir/gith.png)
+![img](screenshotsdir/hash.png)
+![img](screenshotsdir/malicious.png)
+![img](screenshotsdir/ser.png)
 ---
 
 ## 🗺️ Roadmap
